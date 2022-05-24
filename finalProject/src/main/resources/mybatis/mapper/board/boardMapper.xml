@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.mapper.BoardMapper">
+
+<select id="maxNum" resultType="int">
+	select nvl(max(num),0) from board
+</select>
+
+<insert id="insertData" parameterType="com.finalProject.dto.BoardDTO">
+	insert into board (num,name,pwd,email,subject,content,ipAddr,
+	hitCount,created) values (#{num},#{name},#{pwd},#{email},#{subject},
+	#{content},#{ipAddr},0,sysdate)
+</insert>
+
+<select id="getDataCount" parameterType="hashMap" resultType="int">
+	select nvl(count(*),0) from board
+	where ${searchKey} like '%' || #{searchValue} || '%'
+</select>
+
+<select id="getLists" parameterType="map" resultType="com.finalProject.dto.BoardDTO">
+	select * from (
+	select rownum rnum, data.* from (
+	select num,name,subject,hitCount,
+	to_char(created,'YYYY-MM-DD') created
+	from board where ${searchKey} like '%' || #{searchValue} || '%'
+	order by num desc) data)
+<![CDATA[
+	where rnum>=#{start} and rnum<=#{end}
+]]>
+</select>
+
+<update id="updateHitCount" parameterType="int">
+	update board set hitCount=hitCount+1 where num=#{num}
+</update>
+
+<select id="getReadData" parameterType="int" resultType="com.finalProject.dto.BoardDTO">
+	select num,name,pwd,email,subject,content,IpAddr,
+	hitCount,created from board where num=#{num}
+</select>
+
+<update id="updateData" parameterType="com.finalProject.dto.BoardDTO">
+	update board set name=#{name},pwd=#{pwd},email=#{email},
+	subject=#{subject},content=#{content} where num=#{num}
+
+</update>
+
+<delete id="deleteData" parameterType="int">
+	delete board where num=#{num}
+</delete>
+
+
+</mapper>

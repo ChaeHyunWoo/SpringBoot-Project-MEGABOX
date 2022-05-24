@@ -1,0 +1,17 @@
+
+      (function () {
+        try {
+          var u=document.URL, 
+            k=u.match(/beusable_viewer=([^&#]*)/),
+            s=u.match(/staging_viewer=([^&#]*)/),
+            j=u.match(/beusable_jp_viewer=([^&#]*)/),
+            a="//rum.beusable.net/script/checker/b200617e104748u388/bc4af2fa1e?url=",
+            b="//api.beusably.net/script/",
+            c="//staging.beusably.net/script/",
+            d="//www.beusable.co.jp/script/";
+          __beusablerumclient__.load(k&&k[1]?b+k[1]:(s&&s[1]?c+s[1]:(j&&j[1]?d+j[1]:a+encodeURIComponent(u))));
+        } catch (e) {
+          __beusablerumclient__.load(k&&k[1]?b+k[1]:a);
+        }
+      })()
+    

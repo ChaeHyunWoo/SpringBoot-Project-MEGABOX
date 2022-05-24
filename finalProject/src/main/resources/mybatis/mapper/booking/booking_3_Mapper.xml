@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.mapper.Booking_3_Mapper">
+
+<select id="maxNum" resultType="int">
+	select nvl(max(num),0) from FP_PAY
+</select>
+
+<insert id="insertData" parameterType="com.finalProject.dto.FP_PAY_DTO">
+	insert into FP_PAY 
+	(
+	
+	num,
+	
+	memp, dcoupon, vipCpon,
+	
+	mcoupon, scoupon, mgfcard, bookgift,
+	cultgift, paysgift, friends, annus,
+	
+	uplus, okcb, lpoint, gsnp,
+	hyoil, happ, hbluep, joongang,
+	hydm, happcash, bookcash, cultcash,
+	culturenuri,
+	
+	same_use_payment,
+	
+	radio_payment, card_select,
+	
+	tagName,
+	hangle,
+	movieNm,
+	movieImg,
+	playKindNm,
+	brchNm,
+	theater,
+	playDe,
+	dowNm,
+	playTime,
+	
+	adultCnt, youngCnt, favorCnt,
+	
+	adultPrice, youngPrice, favorPrice, totalPrice,
+	
+	seat1, seat2, seat3, seat4,
+	seat5, seat6, seat7, seat8, 
+	
+	ticketNum
+	
+	) values (
+	
+	#{num},
+	
+	#{memp}, #{dcoupon}, #{vipCpon},
+	
+	#{mcoupon}, #{scoupon}, #{mgfcard}, #{bookgift},
+	#{cultgift}, #{paysgift}, #{friends}, #{annus},
+	
+	#{uplus}, #{okcb}, #{lpoint}, #{gsnp},
+	#{hyoil}, #{happ}, #{hbluep}, #{joongang},
+	#{hydm}, #{happcash}, #{bookcash}, #{cultcash},
+	#{culturenuri},
+	
+	#{same_use_payment},
+	
+	#{radio_payment}, #{card_select},
+	
+	#{tagName},
+	#{hangle},
+	#{movieNm},
+	#{movieImg},
+	#{playKindNm},
+	#{brchNm},
+	#{theater},
+	#{playDe},
+	#{dowNm},
+	#{playTime},
+	
+	#{adultCnt}, #{youngCnt}, #{favorCnt},
+	
+	#{adultPrice}, #{youngPrice}, #{favorPrice}, #{totalPrice},
+	
+	#{seat1}, #{seat2}, #{seat3}, #{seat4},
+	#{seat5}, #{seat6}, #{seat7}, #{seat8},
+	
+	#{ticketNum}
+	
+	)
+</insert>
+
+
+
+</mapper>

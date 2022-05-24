@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.mapper.MovieTheaterSaveMapper">
+<select id="getRegionLists" parameterType="map" resultType="com.finalProject.dto.FP_REGION_DTO">
+	select 
+		num, name
+	from FP_REGION
+</select>
+
+<select id="maxNum" resultType="int">
+	select nvl(max(num),0) from FP_THEATER
+</select>
+
+<insert id="insertData" parameterType="com.finalProject.dto.FP_THEATER_DTO">
+	insert into 
+		FP_THEATER 
+	(
+		num,
+		name,
+		regionDetailNum,
+		totalSeat
+	) values (
+		#{num},
+		#{name},
+		#{regionDetailNum},
+		#{totalSeat}
+	)
+</insert>
+
+</mapper>

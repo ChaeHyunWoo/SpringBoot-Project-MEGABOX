@@ -1,0 +1,5 @@
+
+    if(!window['__beusablerumclient__']) window.__beusablerumclient__ = {};
+    __beusablerumclient__.success = false;
+    __beusablerumclient__.message = 'not found apply';
+  

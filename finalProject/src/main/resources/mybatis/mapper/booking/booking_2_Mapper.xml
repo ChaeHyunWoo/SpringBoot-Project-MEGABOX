@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.mapper.Booking_2_Mapper">
+
+<select id="getMt" parameterType="int" resultType="com.finalProject.dto.FP_MOVIETOTAL_DTO">
+	select 
+		num,
+		movieNum,
+		pkNum,
+		regionNum,		
+		rdNum,
+		theaterNum,
+		strDate,
+		startHour,
+		startMinute,
+		endHour,
+		endMinute,
+		remainSeat
+	from FP_MOVIETOTAL
+	where num=#{num}
+</select>
+
+<select id="getMovie" parameterType="int" resultType="com.finalProject.dto.FP_MOVIE_DTO">
+	select 
+		num,
+		name,
+		vcNum,
+		s_f_n,
+		o_f_n,
+		director,
+		actress
+	from FP_MOVIE
+	where num=#{num}
+</select>
+
+<select id="getPlayKind" parameterType="int" resultType="com.finalProject.dto.FP_PLAYKIND_DTO">
+	select 
+		num,
+		name
+	from FP_PLAYKIND
+	where num=#{num}
+</select>
+
+<select id="getRegion" parameterType="int" resultType="com.finalProject.dto.FP_REGION_DTO">
+	select 
+		num,
+		name
+	from FP_REGION
+	where num=#{num}
+</select>
+
+<select id="getRegionDetail" parameterType="int" resultType="com.finalProject.dto.FP_REGIONDETAIL_DTO">
+	select 
+		num,
+		name,
+		regionNum
+	from FP_REGIONDETAIL
+	where num=#{num}
+</select>
+
+<select id="getTheater" parameterType="int" resultType="com.finalProject.dto.FP_THEATER_DTO">
+	select 
+		num,
+		name,
+		regionDetailNum,
+		totalSeat
+	from FP_THEATER
+	where num=#{num}
+</select>
+
+</mapper>

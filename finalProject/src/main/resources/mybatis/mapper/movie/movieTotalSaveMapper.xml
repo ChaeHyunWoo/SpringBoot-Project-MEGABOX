@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.mapper.MovieTotalSaveMapper">
+<select id="getMovieLists" parameterType="map" resultType="com.finalProject.dto.FP_MOVIE_DTO">
+	select 
+		num, name, vcNum, s_f_n, o_f_n
+	from FP_MOVIE
+	order by name asc
+</select>
+
+<select id="getPkLists" parameterType="map" resultType="com.finalProject.dto.FP_PLAYKIND_DTO">
+	select 
+		num, name
+	from FP_PLAYKIND
+	order by name asc
+</select>
+
+<select id="getRegionLists" parameterType="map" resultType="com.finalProject.dto.FP_REGION_DTO">
+	select 
+		num, name
+	from FP_REGION
+</select>
+
+<select id="getTheaterLists" parameterType="int" resultType="com.finalProject.dto.FP_THEATER_DTO">
+	select 
+		num,
+		name,
+		regionDetailNum,
+		totalSeat
+	from FP_THEATER
+	where REGIONDETAILNUM=#{nRdNum}
+	order by name asc
+</select>
+
+<select id="maxNum" resultType="int">
+	select nvl(max(num),0) from FP_MOVIETOTAL
+</select>
+
+<select id="getTotalSeat" parameterType="int" resultType="int">
+	select 
+		totalSeat 
+	from FP_THEATER
+	where NUM=#{NUM}
+</select>
+
+<insert id="insertData" parameterType="com.finalProject.dto.FP_MOVIETOTAL_DTO">
+	insert into 
+		FP_MOVIETOTAL 
+	(
+		num,
+		movieNum,
+		pkNum,
+		regionNum,		
+		rdNum,
+		theaterNum,
+		strDate,
+		startHour,
+		startMinute,
+		endHour,
+		endMinute,
+		remainSeat
+	) values (
+		#{num},
+		#{movieNum},
+		#{pkNum},
+		#{regionNum},
+		#{rdNum},
+		#{theaterNum},
+		#{strDate},
+		#{startHour},
+		#{startMinute},
+		#{endHour},
+		#{endMinute},
+		#{remainSeat}
+	)
+</insert>
+
+</mapper>

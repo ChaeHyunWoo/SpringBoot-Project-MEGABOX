@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.mapper.MovieSaveMapper">
+<select id="getViewingClassLists" parameterType="map" resultType="com.finalProject.dto.FP_VIEWINGCLASS_DTO">
+	select 
+	num,
+	tagName,
+	hangle
+	from FP_VIEWINGCLASS
+</select>
+
+<select id="maxNum" resultType="int">
+	select nvl(max(num),0) from FP_MOVIE
+</select>
+
+<insert id="insertData" parameterType="com.finalProject.dto.FP_MOVIE_DTO">
+	insert into FP_MOVIE 
+	(
+	
+	num,
+	name, 
+	vcNum, 
+	s_f_n,
+	o_f_n
+	
+	) values (
+	
+	#{num},
+	#{name}, 
+	#{vcNum}, 
+	#{s_f_n},
+	#{o_f_n}
+	
+	)
+</insert>
+
+</mapper>

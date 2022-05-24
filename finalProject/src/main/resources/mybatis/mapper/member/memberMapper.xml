@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.finalProject.mapper.MemberMapper">
+
+<!-- 회원가입 -->
+<insert id="memberjoin" parameterType="com.finalProject.dto.MemberDTO">
+	insert into moviemember (id,name,pwd,email1,email2,roadFullAddr,birth_year,birth_month,birth_day) values
+	(#{id},#{name},#{pwd},#{email1},#{email2},#{roadFullAddr},#{birth_year},#{birth_month},#{birth_day})
+</insert>
+
+<!-- 로그인(loginChk)- ID, PW 검증 -->
+<select id="memberlogin" parameterType="com.finalProject.dto.MemberDTO" resultType="Integer">
+	select count(*) from moviemember
+	where id=#{id} and pwd = #{pwd}
+</select>
+
+<!-- id 중복확인 -->
+<select id="idcheck" parameterType="String" resultType="Integer">
+     select count(*) from moviemember
+     where id = #{id}
+</select>
+
+<!-- ID 찾기 -->
+<select id="findId" parameterType="com.finalProject.dto.MemberDTO" resultType="String">
+     select id from moviemember
+     where name = #{name} and email1=#{email1}
+</select>
+
+<!-- PW 찾기 -->
+<select id="findPw" parameterType="com.finalProject.dto.MemberDTO" resultType="String">
+     select pwd from moviemember
+     where id = #{id} and name=#{name}
+</select>
+
+<!-- 하나의 유저 정보 가져오기(세션, 마이페이지 수정할때 User 정보 불러오기) -->
+<select id="getReadData" parameterType="String" resultType="com.finalProject.dto.MemberDTO">
+	select id,name,pwd,email1,email2,roadFullAddr,birth_year,birth_month,birth_day
+	from moviemember where id = #{id}
+</select>
+
+<!-- 회원 정보 수정(MyPage) -->
+<update id="updateMember" parameterType="com.finalProject.dto.MemberDTO">
+	update moviemember set pwd=#{pwd},email1=#{email1},email2=#{email2},roadFullAddr=#{roadFullAddr},birth_year=#{birth_year},birth_month=#{birth_month},birth_day=#{birth_day}
+	where id = #{id}
+</update>
+
+</mapper>
