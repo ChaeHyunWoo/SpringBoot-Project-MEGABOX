@@ -26,9 +26,10 @@ MEGA BOX를 참고하여 만든 영화 예매 사이트입니다.
 - **ORM** : Mybatis
 
 ## 📌 주요 기능
-#### 로그인
+#### 로그인 <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX.wiki.git" >상세보기 - WIKI 이동</a>
 - DB값 검증
 - ID찾기, PW찾기
+- 로그인 시 쿠키(Cookie) 및 세션(Session) 생성
 #### 회원가입
 - 주소 API 연동
 - ID 중복 체크
