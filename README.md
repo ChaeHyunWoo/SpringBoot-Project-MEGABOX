@@ -43,7 +43,7 @@ MEGA BOX를 참고하여 만든 영화 예매 사이트입니다.
 - 좌석 선택
 - 결제 페이지
 - 예매 완료
-#### 메인 페이지 - <a href="" >상세보기 - WIKI 이동</a>
+#### 메인 페이지 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(%EB%A9%94%EC%9D%B8-Page)" >상세보기 - WIKI 이동</a>
 - YouTube API 연동
 - 메인 포스터(영화) 이미지 슬라이드(CSS)
 #### 1대1문의 및 공지사항 - <a href="" >상세보기 - WIKI 이동</a> 
